@@ -1,0 +1,259 @@
+@import 'reset';
+$black-green: #0B3C49;
+$light-green: #26C485;
+$green: #606C38;
+$purple: #731963;
+$black-pink: #C3423F;
+$light-pink: #ED254E;
+$orange: #FA8334;
+$yellow: #F0E100;
+$gray: #CBD2D0;
+
+html {
+    padding: 10px;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 10vh auto 10vh;
+    gap: 10px 10px;
+    grid-auto-flow: row;
+    grid-template-areas: 
+        "header     header  header"
+        "main       main    aside"
+        "footer     footer  footer";
+        
+    header {
+        background-color: $black-green;;
+        width: 100%;
+        grid-area: header;
+    }
+
+    footer {
+        background-color: $light-green;
+        width: 100%;
+        grid-area: footer;
+    }
+
+    main {
+        grid-area: main;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);;
+        grid-template-rows: 2fr 2fr;
+        grid-template-areas: 
+        "A     A"
+        "B     C";
+        gap: 10px 10px;
+        h1 { 
+            font-size: calc(45px + (64 - 45) * ((100vw - 769px) / (1919 - 769)));
+            line-height: 1.5em;}
+        span { 
+            font-size: calc(25px + (40 - 25) * ((100vw - 769px) / (1919 - 769))); 
+            line-height: 1.5em;}
+        p { 
+            font-size: calc(20px + (32 - 20) * ((100vw - 769px) / (1919 - 769))); 
+            line-height: 1.5em;}
+        article:first-child {
+            background-color: $orange;
+            height: 100%;
+            grid-area: A;
+            padding: 20px;
+        }
+        article:nth-child(2) {
+            background-color: $green;
+            height: 100%;
+            grid-area: B;
+        }
+        article:nth-child(3) {
+            background-color: $purple;
+            height: 100%;
+            grid-area: C;
+        }
+    }
+    
+    aside {
+        grid-area: aside;
+        display: flex;
+        gap: 10px 10px;
+        flex-direction: column;
+        article:first-child {
+            background-color: $black-pink;
+            height: 100%;
+            width: 100%;
+        }
+        article:nth-child(2) {
+            background-color: $gray;
+            height: 100%;
+            width: 100%;
+        }
+        article:nth-child(3) {
+            background-color: $yellow;
+            height: 100%;
+            width: 100%;
+        }
+        article:last-child {
+            background-color: $light-pink;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+
+}
+
+@media screen and (max-width: 768px) { 
+    body {
+        grid-template-columns: 1fr 2fr 2fr;
+        grid-template-rows: 3fr 4fr 0.5fr;
+        grid-template-areas: 
+            "header       main    main"
+            "header       aside   aside"
+            "header       footer  footer";
+        main {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr 2fr;
+            grid-template-areas: 
+            "B     C"
+            "A     A";
+            h1 { font-size: calc(30px + (45 - 30) * ((100vw - 150px) / (768 - 150))); line-height: 1.5em;}
+            span { font-size: calc(20px + (25 - 20) * ((100vw - 150px) / (768 - 150))); line-height: 1.5em;}
+            p { font-size: calc(16px + (20 - 16) * ((100vw - 150px) / (768 - 150))); line-height: 1.5em;}
+        }
+    }
+}
+
+@media screen and (min-width: 1920px) { 
+    body {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 4fr 1fr 1fr;
+        grid-template-areas: 
+            "header       main    main      main    main"
+            "header       aside   aside     aside   aside"
+            "footer       aside   aside     aside   aside";
+        main {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 2fr 2fr;
+            grid-template-areas: 
+            "A    A    A   B"
+            "A    A    A   C";
+            h1 { 
+                font-size: calc(64px + (96 - 64) * ((100vw - 1920px) / (4000 - 1920))); 
+                line-height: 1.5em;}
+            span { 
+                font-size: calc(40px + (56 - 40) * ((100vw - 1920px) / (4000 - 1920))); 
+                line-height: 1.5em;}
+            p { 
+                font-size: calc(32px + (45 - 32) * ((100vw - 1920px) / (4000 - 1920))); 
+                line-height: 1.5em; column-count: 3;}
+
+             
+        }
+        aside {
+            flex-direction: row;
+        }
+    }
+}
+
+
+@media screen and (min-width: 769px) and (max-width:1200px) { 
+    body {
+        main {
+            grid-template-rows: 2fr 1fr 1fr;
+            grid-template-columns: 1fr;
+            grid-template-areas: 
+            "A"
+            "B"
+            "C";
+            // display: flex;
+            // flex-direction: column;
+        }
+    }
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1600px) {
+    main {
+        article:first-child {
+            display: flex;
+            flex-direction: column;
+            h1 {
+                width: fit-content;
+            }
+            span {
+                width: fit-content;
+            }
+            p {
+                float: right;
+                width: 23em;
+                align-self: flex-end;
+                margin-top: -150px;;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 366px) and (max-width: 768px) {
+    main {
+        article:first-child {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            p {
+                padding-bottom: 15px;
+            }
+            span {
+                position: absolute;
+                bottom: 0;
+            }
+            span:nth-child(2) {
+                position: absolute;
+                bottom: 0;
+                left: 7em;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width:500px) { 
+    body {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.2fr 2fr 2fr 0.2fr;
+        grid-template-areas: 
+            "header       header"
+            "main         main"
+            "aside        aside"
+            "footer       footer";
+        main {
+            grid-template-columns: 1fr;
+            grid-template-rows: 0.5fr 0.5fr 1fr;
+            grid-template-areas: 
+            "B"
+            "C"
+            "A";
+        }
+    }
+}
+
+@media screen and (min-width:2500px) { 
+    body {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 0.5fr 2fr 2fr 0.5fr;
+        grid-template-areas: 
+            "header       header    header"
+            "main         main      aside"
+            "main         main      aside"
+            "footer       footer    footer";
+        main {
+            grid-template-columns: 1fr 2fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas: 
+            "B  A"
+            "C  A";
+        }
+        aside {
+            flex-direction: column;
+        }
+    }
+}
